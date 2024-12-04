@@ -3,31 +3,16 @@ with open("input.txt", 'r') as f:
     rows = len(lines)
     cols = len(lines[0]) if rows > 0 else 0
 
-    directions = [
-        (-1, 0),
-        (1, 0),
-        (0, -1),
-        (0, 1),
-        (-1, -1),
-        (-1, 1),
-        (1, -1),
-        (1, 1),
-    ]
-
-    target = "XMAS"
     count = 0
 
-    def check_word(x, y, dx, dy):
-        for k in range(len(target)):
-            nx, ny = x + k * dx, y + k * dy
-            if nx < 0 or nx >= rows or ny < 0 or ny >= cols or lines[nx][ny] != target[k]:
-                return False
-        return True
-
-    for x in range(rows):
-        for y in range(cols):
-            for dx, dy in directions:
-                if check_word(x, y, dx, dy):
+    for x in range(1, rows-1):
+        for y in range(1, cols-1):
+            if lines[x][y] == 'A':
+                r = lines[x-1][y-1] == 'M' and lines[x+1][y+1] == 'S'
+                g = lines[x+1][y-1] == 'M' and lines[x-1][y+1] == 'S'
+                b = lines[x+1][y-1] == 'S' and lines[x-1][y+1] == 'M'
+                y = lines[x-1][y-1] == 'S' and lines[x+1][y+1] == 'M'
+                if (r and (g or b)) or (y and (b or g)):
                     count += 1
-
 print(count)
+
