@@ -25,7 +25,7 @@ idx = 0
 for i in range(len(disk_list)):
     if disk_list[i] != '.':
         checksum += disk_list[i] * idx
-        idx += 1
+    idx += 1
 
 # print(disk_list)
 print("Checksum:", checksum)
