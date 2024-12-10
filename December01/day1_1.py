@@ -10,11 +10,8 @@ with open("input.txt", 'r') as f:
 arr1.sort()
 arr2.sort()
 distance_sum = 0
-similarity_score = 0
 
 for i in range(0, len(arr1)):
-    distance_sum += abs(arr1[i]-arr2[i])
-    similarity_score += arr2.count(arr1[i]) * arr1[i]
+    distance_sum += abs(arr1[i] - arr2[i])
 
 print(distance_sum)
-print(similarity_score)
