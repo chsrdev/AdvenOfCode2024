@@ -24,7 +24,7 @@ def blink(stone, times, stones_size):
 size = 0
 stones_size = {}
 for stone in stones:
-    blink_res = blink(stone, 25, stones_size)
+    blink_res = blink(stone, 75, stones_size)
     stones_size = blink_res[1]
     size += blink_res[0]
 print(size)
